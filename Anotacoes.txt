@@ -1,0 +1,16 @@
+# Donwload do Docker Desktop Community 2.1.0.2
+# https://download.docker.com/win/stable/37877/Docker%20Desktop%20Installer.exe
+
+# Donwload do VirtualBox 6.0.14
+# https://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-Win.exe
+
+# Verificar versão do Docker Machine (caso tenha insalado)
+$ docker-machine -v
+
+# Verificar versão do Docker
+$ docker version
+
+# Utilizando o Play With Docker	(caso haja problemas em instalar o docker na máquina)
+# https://labs.play-with-docker.com/
+
+#################################################
