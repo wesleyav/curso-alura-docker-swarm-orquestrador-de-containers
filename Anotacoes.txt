@@ -1,8 +1,19 @@
+# docs.docker.com/docker-for-windows/release-notes/
+
+# Requisitos e versões para o curso:
+# - Docker 19.03.2
+# - Docker Machine 0.16.2
+# Ambos instalados via Docker Desktop Community 2.1.0.2 (deprecated)
+
 # Donwload do Docker Desktop Community 2.1.0.2
 # https://download.docker.com/win/stable/37877/Docker%20Desktop%20Installer.exe
 
 # Donwload do VirtualBox 6.0.14
 # https://download.virtualbox.org/virtualbox/6.0.14/VirtualBox-6.0.14-133895-Win.exe
+
+# OPCIONAL
+# Toolbox (deprecated)
+# https://github.com/docker/toolbox/releases/tag/v19.03.1
 
 # Verificar versão do Docker Machine (caso tenha insalado)
 $ docker-machine -v
@@ -12,5 +23,40 @@ $ docker version
 
 # Utilizando o Play With Docker	(caso haja problemas em instalar o docker na máquina)
 # https://labs.play-with-docker.com/
+
+#################################################
+
+# Ao utilizar VirtualBox, desabilitar Hyper-V:
+$ bcdedit /set hypervisorlaunchtype off
+
+# Habilitar o Hyper-V via PowerShell:
+$ Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
+
+# Habilitar o Hyper-V via Prompt:
+$ DISM /Online /Enable-Feature /All /FeatureName:Microsoft-Hyper-V
+
+# Listar VM´s na docker machine
+$ docker-machine ls
+
+# Criar VM na docker machine usando virtualbox
+$ docker-machine create -d virtualbox vm1
+
+# Criar VM na docker machine usando hyper-v
+$ docker-machine create --driver hyperv vm1
+
+# Subir VM:
+$ docker-machine start vm1
+
+# Parar VM:
+$ docker-machine stop vm1
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm1
+
+# Remover a VM:
+$ docker-machine rm vm1
+
+# Matar a VM:
+$ docker-machine kill vm1
 
 #################################################
