@@ -136,3 +136,35 @@ $ docker-machine stop vm1
 $ docker-machine start vm1
 
 #################################################
+
+# Sworm - orquestrador
+# Workers - gerenciadores filhos, subordinados de Sworm, carregam os containers
+
+# Criar VM na docker machine usando virtualbox
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm2
+
+# Criar VM na docker machine usando virtualbox
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm3
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm2
+
+# Recuperar o código que adiciona o Worker ao Sworm (exibir token)
+# Executar na vm1 (a vm Sworm)
+$ docker swarm join-token worker
+
+# Adicionar um Worker ao Swarm:
+
+# - Adicionar na vm2
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm2
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm3
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+#################################################
