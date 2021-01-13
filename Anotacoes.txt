@@ -60,3 +60,38 @@ $ docker-machine rm vm1
 $ docker-machine kill vm1
 
 #################################################
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm1
+
+# Iniciar Swarm
+$ docker swarm init
+
+# Iniciar Swarm setando IP da vm1 que foi criada (será o manager do cluster)
+$ docker swarm init --advertise-addr 192.168.66.1
+
+# Visualizar informações do Docker
+$ docker info
+
+#################################################
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
