@@ -155,12 +155,14 @@ $ docker swarm join-token worker
 
 # Adicionar um Worker ao Swarm:
 
-# - Adicionar na vm2
+# 1- Adicionar na vm2
 
 # Acessar VM via SSH:
 $ docker-machine ssh vm2
 
 $ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+# 2- Adicionar na vm3
 
 # Acessar VM via SSH:
 $ docker-machine ssh vm3
