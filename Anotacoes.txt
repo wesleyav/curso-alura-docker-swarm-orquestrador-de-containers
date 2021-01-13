@@ -40,6 +40,7 @@ $ docker-machine ls
 
 # Criar VM na docker machine usando virtualbox
 $ docker-machine create -d virtualbox vm1
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm1
 
 # Criar VM na docker machine usando hyper-v
 $ docker-machine create --driver hyperv vm1
@@ -68,7 +69,7 @@ $ docker-machine ssh vm1
 $ docker swarm init
 
 # Iniciar Swarm setando IP da vm1 que foi criada (será o manager do cluster)
-$ docker swarm init --advertise-addr 192.168.66.1
+$ docker swarm init --advertise-addr 192.168.99.100
 
 # Visualizar informações do Docker
 $ docker info
@@ -82,5 +83,56 @@ O que aprendemos?
 - Como criar máquinas já provisionadas para utilizar o Docker com a Docker Machine utilizando comando docker-machine create
 - Um cluster é um conjunto de máquinas dividindo poder computacional
 - Como criar um cluster utilizando o Docker Swarm utilizando o comando docker swarm init
+
+#################################################
+
+# Após várias tentativas de instalação e configuração sem sucesso, consegui da seguinte forma:
+
+# 1- Instalei o Docker Engine for Windows:
+# - https://desktop.docker.com/win/stable/Docker%20Desktop%20Installer.exe
+# 
+# 2- Instalando Docker Machine
+# Instalar o Git Bash e nele executar:
+
+$ base=https://github.com/docker/machine/releases/download/v0.16.0 &&
+  mkdir -p "$HOME/bin" &&
+  curl -L $base/docker-machine-Windows-x86_64.exe > "$HOME/bin/docker-machine.exe" &&
+  chmod +x "$HOME/bin/docker-machine.exe"
+
+# 3- Instalei VirtualBox:
+# https://download.virtualbox.org/virtualbox/6.1.16/VirtualBox-6.1.16-140961-Win.exe
+
+# Configuração padrão do virtualbox.
+
+# Terminal padrão BASH (não mais o Prompt do Windows ou PowerShell)
+
+# Verificar versão do Docker
+$ docker version
+
+# Verificar versão do Docker Machine
+$ docker-machine -v
+
+# Listar VM´s na docker machine
+$ docker-machine ls
+
+# Hyper-V habilitado!
+
+# Criar VM na docker machine usando virtualbox
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm1
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm1
+
+# Iniciar Swarm setando IP da vm1 que foi criada (será o manager do cluster)
+$ docker swarm init --advertise-addr 192.168.99.100
+
+# Visualizar informações do Docker
+$ docker info
+
+# Parar VM:
+$ docker-machine stop vm1
+
+# Subir VM:
+$ docker-machine start vm1
 
 #################################################
