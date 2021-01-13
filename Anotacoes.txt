@@ -195,3 +195,35 @@ $ docker-machine ssh vm3
 $ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
 
 #################################################
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm2
+
+# Subir o container na vm2 (escopo local (nó ou máquina física) ou seja, somente a vm2 visualiza)
+$ docker container run -p 8080:3000 -d aluracursos/barbearia
+
+# Exibir o container criado
+$ docker container ls
+
+# Acessando no navegador da máquina física o endereço: localhost:8080 não exibe nada
+# É necessário buscar o ip da vm2, para isso, precisa inspecionar a vm2 para obter o ip dela
+
+# Acessar a vm1 via SSH e inspecionar a vm2
+$ docker node inspect vm2
+
+# Acessando no navegador da máquina física o endereço: 192.168.99.101:8080
+
+# Criar container no escopo do Swarm (cluster)
+
+# 1- Na vm2 listar o container para pegar o id
+$ docker container ls
+# 2- Na vm2 remover o container anteriormente criado
+# docker container rm + id --force
+$ docker container rm 9bf93d197015 --force
+
+# Criar um container onde todos os outros nós possam identificar, chama-se serviço
+
+# Na vm1 (manager)
+$ docker service create -p 8080:3000 aluracursos/barbearia
+
+#################################################
