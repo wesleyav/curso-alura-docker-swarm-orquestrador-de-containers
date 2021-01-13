@@ -170,3 +170,28 @@ $ docker-machine ssh vm3
 $ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
 
 #################################################
+
+# Listar nós que fazem parte do Sworm
+$ docker node ls
+
+# Remover o nó (worker) do Swarm:
+# Aplicar no nó que quer remover do Sworm (vm3)
+$ docker swarm leave
+
+# Ainda na vm3, remover o nó:
+# docker node rm + id
+$ docker node rm v9p6tizug1hsoo9zz2kpljamu
+
+# Readicionar o nó ao Swarm
+# 1- Recuperar o código que adiciona o Worker ao Sworm (exibir token)
+#  - Executar na vm1 (a vm Sworm)
+   - $ docker swarm join-token worker
+
+# 2- Adicionar a vm3
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm3
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+#################################################
