@@ -75,23 +75,12 @@ $ docker info
 
 #################################################
 
+O que aprendemos?
 
+- O Docker Swarm é um orquestrador
+- O Docker Swarm é capaz de alocar e reiniciar containers de maneira automática
+- Como criar máquinas já provisionadas para utilizar o Docker com a Docker Machine utilizando comando docker-machine create
+- Um cluster é um conjunto de máquinas dividindo poder computacional
+- Como criar um cluster utilizando o Docker Swarm utilizando o comando docker swarm init
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#################################################
