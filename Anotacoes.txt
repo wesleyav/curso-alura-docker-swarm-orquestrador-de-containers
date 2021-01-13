@@ -227,3 +227,28 @@ $ docker container rm 9bf93d197015 --force
 $ docker service create -p 8080:3000 aluracursos/barbearia
 
 #################################################
+
+# Na vm1 (manager), listar os serviços
+$ docker service ls
+
+# (task) tarefa = instância de um serviço que foi criado
+
+# Visualizar o detalhe da task do serviço criado
+# docker service ps + id do serviço
+$ docker service ps pac6slldj3xf
+
+# Visualizar ip da vm1 com:
+$ docker inspect vm1
+
+# Acessando no navegador da máquina física o endereço: 192.168.99.100:8080 o serviço está up!
+
+# Acessar a vm2 e remover o container na vm2
+# docker container rm + id --force
+$ docker container rm 60557e9a1094 --force
+
+# Acessar a vm1 e visualizar a lista de serviços, depois pelo id do serviço
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps pac6slldj3xf
+
+#################################################
