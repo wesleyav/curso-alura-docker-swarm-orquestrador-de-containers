@@ -529,3 +529,16 @@ $ docker service ps jfl2t9vgjc8t
 # Foram criadas 4 réplicas do serviço espalhadas pelo Sworm
 
 #################################################
+
+Para saber mais: service scale
+
+Vamos supor que temos um serviço com id ci10k3u7q6ti. Como podemos escalar esse serviço para ter 5 réplicas?
+
+Aprendemos uma das possibilidades de alterar o número de réplicas de um serviço utilizando o comando docker service update --replicas 5 ci10k3u7q6ti, mas esse não é o único meio!
+
+Para isso também temos o comando docker service scale. Utilizando o id, podemos atualizar com o comando:
+$ docker service scale ci10k3u7q6ti=5
+
+Nesse caso, definimos 5 réplicas para o serviço. Os dois comandos produzem o mesmo resultado, o segundo é apenas uma forma resumida do primeiro comando.
+
+#################################################
