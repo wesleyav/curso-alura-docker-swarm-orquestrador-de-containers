@@ -578,3 +578,38 @@ $ docker network ls
 $ docker node inspect vm1 --pretty
 
 #################################################
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Visualizar redes
+$ docker network ls
+
+# Criar um serviço com 2 réplicas
+# docker service create --name nome_para_o_serviço --replicas 2 alpine sleed 1d
+$ docker service create --name servico --replicas 2 alpine sleep 1d
+
+# Verificar serviços
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps 1gwjyd0jqnbj
+
+# Visualizar o container
+$ docker container ls
+
+# Executar o serviço
+$ docker exec -it + nome do serviço criado sh
+$ docker exec -it sh
+
+# Acessar VM4 via SSH:
+$ docker-machine ssh vm4
+
+# Executar o serviço
+$ docker exec -it + nome do serviço criado sh
+$ docker exec -it servico.1. sh
+# Dará erro, não há comunicação via nome
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+#################################################
