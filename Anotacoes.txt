@@ -265,3 +265,14 @@ Nesta aula, aprendemos:
  - Portas são compartilhadas entre nós do swarm e são acessíveis a partir de qualquer nó graças ao routing mesh
 
 #################################################
+
+O papel do manager
+
+# Caso aconteça algo na vm1 (manager)
+
+# Removendo o nó manager do Swarm (não realizar isso, foi somente para entendimento)
+$ docker swarm leave --force
+
+# Após a vm1 estar comprometida, não será possível subir mais qualquer serviço no cluster, mesmo tentando na vm2 ou vm3, os nós workers estão "perdidos".
+
+#################################################
