@@ -500,3 +500,13 @@ $ docker service update --constraint-rm node.hostname==vm4 ci10k3u7q6ti
 Após esse momento, quaisquer novas réplicas criadas para esse serviço poderão ser alocadas sem restrição alguma!
 
 #################################################
+
+O que aprendemos?
+
+Nesta aula, aprendemos:
+
+ - Como readicionar um manager posterior a uma falha
+ - Restringir nós de executarem quaisquer serviços utilizando o docker node update --availability drain
+ - Restringir serviços de serem executados em determinados nós utilizando o docker service update --constraint-add
+
+#################################################
