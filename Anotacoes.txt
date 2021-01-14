@@ -384,3 +384,17 @@ $ docker-machine ssh vm5
 $ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
 
 #################################################
+
+Algoritmo de consenso RAFT
+
+Regras
+
+Suporta 
+(N-1) / 2 falhas
+
+Deve ter no mínimo
+(N/2) +1 quórum
+
+N = número de managers
+
+#################################################
