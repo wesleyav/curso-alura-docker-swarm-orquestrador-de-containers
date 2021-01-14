@@ -542,3 +542,13 @@ $ docker service scale ci10k3u7q6ti=5
 Nesse caso, definimos 5 réplicas para o serviço. Os dois comandos produzem o mesmo resultado, o segundo é apenas uma forma resumida do primeiro comando.
 
 #################################################
+
+# Criar serviço em modo global
+$ docker service create -p 8080:3000 --mode global aluracursos/barbearia
+
+# Verificar serviços
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps wj27r6rf47ub
+
+#################################################
