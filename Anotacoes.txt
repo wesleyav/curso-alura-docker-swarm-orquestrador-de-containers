@@ -427,3 +427,29 @@ $ docker swarm join-token manager
 # docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-2f64h145p6gr7kl1laax5cnp3 192.168.99.100:2377
 
 #################################################
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Remover os serviços
+$ docker service rm + id
+
+# Remover todos os serviços
+$ docker service rm $(docker service ls -q)
+
+# Recriando o serviço na vm1 (manager)
+$ docker service create -p 8080:3000 aluracursos/barbearia
+
+# Verificar o serviço
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps jfl2t9vgjc8t
+
+
+# Restringir a vm2 (não permitir que algum serviço seja executado nesse nó)
+$ docker node update --availability drain vm2
+
+# Voltando para active
+$ docker node update --availability active vm2
+
+#################################################
