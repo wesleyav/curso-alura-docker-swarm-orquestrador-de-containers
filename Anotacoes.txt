@@ -613,3 +613,27 @@ $ docker exec -it servico.1. sh
 $ docker-machine ssh vm1
 
 #################################################
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Consultar redes
+$ docker network ls
+
+# Criar rede em overlay
+# docker network create -d overlay nome-da-rede
+$ docker network create -d overlay my_overlay
+
+# Consultar redes
+$ docker network ls
+
+# Subir 2 serviços no nó worker e na rede my_overlay
+$ docker service create --name nome-do-serviço --network nome-da-rede --replicas 2 alpine sleep 1d
+$ docker service create --name servico --network my_overlay --replicas 2 alpine sleep 1d
+
+# Verificar serviços
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps m0hxwrf10473
+
+#################################################
