@@ -649,3 +649,13 @@ $ docker network create -d overlay --attachable my_overlay
 Com o comando acima, conseguiremos conectar tanto serviços como containers "standalone" em nossa rede my_overlay.
 
 #################################################
+
+O que aprendemos?
+
+ - A rede ingress é a padrão criada junto com nosso swarm
+ - O driver overlay é utilizado para a comunicação entre nós em diferentes hosts
+ - Como criar nossas próprias redes com o driver overlay utilizando o comando docker network create -d overlay
+ - Redes overlays criadas manualmente (User-Defined Overlay) permitem a comunicação entre serviços por seus nomes (Service Discovery)
+ - As redes criadas com o driver overlay são listadas de maneira lazy para workers
+
+#################################################
