@@ -663,7 +663,6 @@ O que aprendemos?
 # Acessar VM1 via SSH:
 $ docker-machine ssh vm1
 
-
 # Criar arquivo e colar o conteúdo do docker-compose.yml nele
 $ cat > docker-compose.yml
 
@@ -693,29 +692,9 @@ $ docker service ps vote_worker
 $ docker stack rm nome-da-stack
 $ docker stack rm vote
 
+# Acessando no navegador da máquina física o endereço: 
+# http://192.168.99.100:8080/
+# http://192.168.99.100:5000/
+# http://192.168.99.100:5001/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#################################################
