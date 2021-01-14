@@ -453,3 +453,27 @@ $ docker node update --availability drain vm2
 $ docker node update --availability active vm2
 
 #################################################
+
+# Restringir um serviço (não deverá ser executado em um determinado nó)
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Restringir serviço para que seja executa somente em um nó do tipo worker
+# docker service update --constraint-add node.role==worker + id do serviço
+$ docker service update --constraint-add node.role==worker jfl2t9vgjc8t
+
+# Verificar serviços
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps jfl2t9vgjc8t
+
+# Com isso o serviço foi removido da vm3 que é manager para a vm5 que é worker
+
+# Acessar VM5 via SSH:
+$ docker-machine ssh vm5
+
+# Visualizar o container
+$ docker container ls
+
+#################################################
