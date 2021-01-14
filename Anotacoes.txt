@@ -669,9 +669,8 @@ $ cat > docker-compose.yml
 # enter
 # CTRL + D pra sair
 
-
 # Fazer o deploy usando o arquivo
-# $ docker stack deploy --compose-file docker-compose.yml nome-da-stack
+# docker stack deploy --compose-file docker-compose.yml nome-da-stack
 $ docker stack deploy --compose-file docker-compose.yml vote
 
 # Visualizar as stacks
@@ -691,6 +690,17 @@ $ docker service ps vote_worker
 # Remover a stack
 $ docker stack rm nome-da-stack
 $ docker stack rm vote
+
+# Remover todos os serviços
+$ docker service rm $(docker service ls -q)
+
+# Parar VM:
+# docker-machine stop nome-da-vm
+$ docker-machine stop vm1
+
+# Subir VM:
+# docker-machine start nome-da-vm
+$ docker-machine start vm1
 
 # Acessando no navegador da máquina física o endereço: 
 # http://192.168.99.100:8080/
