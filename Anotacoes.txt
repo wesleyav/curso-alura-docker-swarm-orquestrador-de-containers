@@ -276,3 +276,51 @@ $ docker swarm leave --force
 # Após a vm1 estar comprometida, não será possível subir mais qualquer serviço no cluster, mesmo tentando na vm2 ou vm3, os nós workers estão "perdidos".
 
 #################################################
+
+# Como seria a forma correta de criar o cluster, configurando backup!
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Iniciar Swarm setando IP da vm1 que foi criada (será o manager do cluster)
+$ docker swarm init --advertise-addr 192.168.99.100
+
+# 1- Adicionar na vm2
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm2
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+# 2- Adicionar na vm3
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm3
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+# Copiar os logs do Sworm (ficam na pasta /var/lib/docker/swarm)
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Acessar a pasta
+$ sudo su
+$ cd /var/lib/docker/swarm
+$ ls
+$ cd
+
+# Copiar os logs para uma pasta de backup
+$ cp -r /var/lib/docker/swarm backup
+
+# Visualizando o conteúdo da pasta criada (backup)
+$ ls backup
+
+# Voltando o backup (no caso em que o Sworm foi destruído, a vm1 e as outras vms removidas do Swarm) para a pasta padrão do Swarm
+$ cp -r backup/* /var/lib/docker/swarm/
+
+# Recriar o cluster Swarm forçando a utilizar o arquivo que agora está em /var/lib/docker/swarm
+# docker swarm init --force-new-cluster --advertise-addr + ip da vm1 (manager)
+$ docker swarm init --force-new-cluster --advertise-addr 192.168.99.100
+
+#################################################
