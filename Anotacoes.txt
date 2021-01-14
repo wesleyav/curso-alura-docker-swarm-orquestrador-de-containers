@@ -564,3 +564,17 @@ Nesta aula, aprendemos:
  - Como definir o modo que o serviço será criado utilizando a flag --mode no momento da criação do serviço
 
 #################################################
+
+A rede ingress
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Visualizar redes
+$ docker network ls
+
+# Visualizar o inspect da vm1
+# --pretty exibe em formato de lista
+$ docker node inspect vm1 --pretty
+
+#################################################
