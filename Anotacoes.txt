@@ -510,3 +510,22 @@ Nesta aula, aprendemos:
  - Restringir serviços de serem executados em determinados nós utilizando o docker service update --constraint-add
 
 #################################################
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Verificar serviços
+$ docker service ls
+# docker service ps + id do serviço
+$ docker service ps jfl2t9vgjc8t
+
+# Atualizar o número de réplicas
+# docker service update --replicas número de réplicas + id do serviço
+$ docker service update --replicas 4 jfl2t9vgjc8t
+
+# docker service ps + id do serviço
+$ docker service ps jfl2t9vgjc8t
+
+# Foram criadas 4 réplicas do serviço espalhadas pelo Sworm
+
+#################################################
