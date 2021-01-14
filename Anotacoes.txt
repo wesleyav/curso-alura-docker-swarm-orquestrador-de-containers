@@ -324,3 +324,63 @@ $ cp -r backup/* /var/lib/docker/swarm/
 $ docker swarm init --force-new-cluster --advertise-addr 192.168.99.100
 
 #################################################
+
+# Definir um nó worker como manager
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+$ docker swarm join-token manager
+# docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-2f64h145p6gr7kl1laax5cnp3 192.168.99.100:2377
+
+# Removendo o nó manager do Swarm (no caso de já ter definido o nó como worker, se não tiver feito isso, não precisa usar "docker swarm leave --force)
+$ docker swarm leave --force
+
+# Acessar VM2 via SSH e adicioná-la como manager:
+$ docker-machine ssh vm2
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-2f64h145p6gr7kl1laax5cnp3 192.168.99.100:2377
+
+# Removendo o nó manager do Swarm (no caso de já ter definido o nó como worker, se não tiver feito isso, não precisa usar "docker swarm leave --force)
+$ docker swarm leave --force
+
+# Acessar VM3 via SSH e adicioná-la como manager:
+$ docker-machine ssh vm3
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-2f64h145p6gr7kl1laax5cnp3 192.168.99.100:2377
+
+# No bash:
+
+# Criar VM4 na docker machine usando virtualbox
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm4
+
+# Criar VM5 na docker machine usando virtualbox
+$ docker-machine create -d virtualbox --virtualbox-no-vtx-check vm5
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+# Acessar vm1 e visualizar os nós
+$ docker node ls
+
+# Formatar saída do comando
+$ docker node ls --format "{{.Hostname}} {{.ManagerStatus}}"
+
+# Adicionar o nó ao Swarm
+# 1- Recuperar o código que adiciona o Worker ao Sworm (exibir token)
+#  - Executar na vm1 (a vm Sworm)
+   - $ docker swarm join-token worker
+
+# 2- Adicionar a vm4
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm4
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+# 3- Adicionar a vm5
+
+# Acessar VM via SSH:
+$ docker-machine ssh vm5
+
+$ docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-4wbvdmhh8vmw6n6lpmeprnw9g 192.168.99.100:2377
+
+#################################################
