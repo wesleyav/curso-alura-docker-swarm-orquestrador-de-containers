@@ -637,3 +637,15 @@ $ docker service ls
 $ docker service ps m0hxwrf10473
 
 #################################################
+
+Para saber mais: Containers e Overlay
+
+Por mais que o driver overlay seja responsável por comunicar múltiplos hosts em uma mesma rede, também podemos conectar containers em escopo local criados com o comando docker container run em redes criadas com esse driver.
+
+Para isso, basta no momento da criação da rede utilizarmos a flag --attachable:
+
+$ docker network create -d overlay --attachable my_overlay
+
+Com o comando acima, conseguiremos conectar tanto serviços como containers "standalone" em nossa rede my_overlay.
+
+#################################################
