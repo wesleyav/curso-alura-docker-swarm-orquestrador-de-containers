@@ -659,3 +659,63 @@ O que aprendemos?
  - As redes criadas com o driver overlay são listadas de maneira lazy para workers
 
 #################################################
+
+# Acessar VM1 via SSH:
+$ docker-machine ssh vm1
+
+
+# Criar arquivo e colar o conteúdo do docker-compose.yml nele
+$ cat > docker-compose.yml
+
+# enter
+# CTRL + D pra sair
+
+
+# Fazer o deploy usando o arquivo
+# $ docker stack deploy --compose-file docker-compose.yml nome-da-stack
+$ docker stack deploy --compose-file docker-compose.yml vote
+
+# Visualizar as stacks
+$ docker stack ls
+
+# Verificar serviços
+$ docker service ls
+
+# Verificar serviços pelo nome
+$ docker service ps vote_db
+$ docker service ps vote_redis
+$ docker service ps vote_result
+$ docker service ps vote_visualizer
+$ docker service ps vote_vote
+$ docker service ps vote_worker
+
+# Remover a stack
+$ docker stack rm nome-da-stack
+$ docker stack rm vote
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
