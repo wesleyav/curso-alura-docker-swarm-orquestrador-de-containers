@@ -409,3 +409,21 @@ O que aprendemos?
  - Os requisitos para funcionamento do RAFT
 
 #################################################
+
+# Acessar a vm (em questão) via ssh:
+$ docker-machine ssh vm
+
+# Rebaixar um nó manager para worker
+$ docker node demote vm
+
+# Remover a vm
+$ docker node rm vm
+
+# Em uma vm manager
+$ docker swarm join-token manager
+
+# Na vm que se quer readicionar como manager
+
+# docker swarm join --token SWMTKN-1-65p0a14mqrujb9gbn8xv144nhwkjjub4x9sr79qncfyz2ocylh-2f64h145p6gr7kl1laax5cnp3 192.168.99.100:2377
+
+#################################################
